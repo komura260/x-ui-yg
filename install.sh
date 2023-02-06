@@ -32,6 +32,7 @@ cur_dir=$(pwd)
 
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${red}错误：${plain} 必须使用root用户运行此脚本！\n" && exit 1
+[[ -e /etc/hosts ]] && grep -qE '^ *172.65.251.78 gitlab.com' /etc/hosts || echo '172.65.251.78 gitlab.com' >> /etc/hosts
 
 # check os
 if [[ -f /etc/redhat-release ]]; then
