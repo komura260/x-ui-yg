@@ -303,7 +303,6 @@ done
 fi
 /usr/local/x-ui/x-ui setting -port $port >/dev/null 2>&1
 green "x-ui登录端口：${port}"
-x-ui restart
 sleep 1
 xuilogin(){
 v4=$(curl -s4m6 ip.sb -k)
