@@ -260,6 +260,7 @@ echo -e ""
 blue "以下设置内容建议自定义，以防止账号密码及端口泄露"
 echo -e ""
 readp "设置x-ui登录用户名，必须为6位字符以上（回车跳过为随机6位字符）：" username
+sleep 1
 if [[ -z ${username} ]]; then
 username=`date +%s%N |md5sum | cut -c 1-6`
 else
@@ -274,6 +275,7 @@ sleep 1
 green "x-ui登录用户名：${username}"
 echo -e ""
 readp "设置x-ui登录密码，必须为6位字符以上（回车跳过为随机6位字符）：" password
+sleep 1
 if [[ -z ${password} ]]; then
 password=`date +%s%N |md5sum | cut -c 1-6`
 else
@@ -284,11 +286,13 @@ do
 done
 fi
 fi
+sleep 1
 green "x-ui登录密码：${password}"
 /usr/local/x-ui/x-ui setting -username ${username} -password ${password} >/dev/null 2>&1
 sleep 1
 echo -e ""
 readp "设置x-ui登录端口[1-65535]（回车跳过为2000-65535之间的随机端口）：" port
+sleep 1
 if [[ -z $port ]]; then
 port=$(shuf -i 2000-65535 -n 1)
 until [[ -z $(ss -ntlp | awk '{print $4}' | sed 's/.*://g' | grep -w "$port") ]]
