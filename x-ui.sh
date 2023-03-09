@@ -191,7 +191,7 @@ uninstall() {
     rm /etc/systemd/system/x-ui.service -f
     systemctl daemon-reload
     systemctl reset-failed
-    rm /etc/x-ui/ -rf
+    rm /etc/x-ui-yg/ -rf
     rm /usr/local/x-ui/ -rf
     rm -rf acme.sh
     sed -i '/x-ui restart/d' /etc/crontab >/dev/null 2>&1
