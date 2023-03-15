@@ -336,6 +336,11 @@ systemctl restart warp-go >/dev/null 2>&1
 systemctl enable warp-go >/dev/null 2>&1
 systemctl start warp-go >/dev/null 2>&1
 fi
+if [[ -f '/root/warpip/result.csv' ]]; then
+endpoint=`sed -n '2p' /root/warpip/result.csv | awk -F ',' '{print $1}'`
+green "本地VPS优选的warp对端IP地址：$endpoint"
+green "你可以复制 $endpoint 到xui-面版设置-xray配置模版中 endpoint 后的对端IP地址，以提升xray-wg-warp速度"
+fi
 else
 red "x-ui安装失败，请运行 systemctl status x-ui 查看x-ui状态"
 fi
