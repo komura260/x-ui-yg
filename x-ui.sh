@@ -544,8 +544,8 @@ show_menu() {
     green "$acp"
     if [[ -f '/root/warpip/result.csv' ]]; then
     endpoint=`sed -n '2p' /root/warpip/result.csv | awk -F ',' '{print $1}'`
-    green "本地VPS优选的warp对端IP地址：$endpoint"
-    green "你可以复制 $endpoint 到xui-面版设置-xray配置模版中 endpoint 后的对端IP地址，以提升xray-wg-warp速度"
+    yellow "本地VPS优选的warp对端IP地址：$endpoint"
+    yellow "你可以复制 $endpoint 到xui-面版设置-xray配置模版中 endpoint 后的对端IP地址，以提升xray-wg-warp速度"
     fi
     echo "------------------------------------------"
     xuiygV="22.11.26 V 1.1"
