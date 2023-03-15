@@ -542,6 +542,11 @@ show_menu() {
     echo "------------------------------------------"
     acp=$(/usr/local/x-ui/x-ui setting -show 2>/dev/null)
     green "$acp"
+    if [[ -f '/root/warpip/result.csv' ]]; then
+    endpoint=`sed -n '2p' /root/warpip/result.csv | awk -F ',' '{print $1}'`
+    green "本地VPS优选的warp对端IP地址：$endpoint"
+    green "你可以复制 $endpoint 到xui-面版设置-xray配置模版中 endpoint 后的对端IP地址，以提升xray-wg-warp速度"
+    fi
     echo "------------------------------------------"
     xuiygV="22.11.26 V 1.1"
     remoteV=`wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh | sed  -n 2p | cut -d '"' -f 2`
