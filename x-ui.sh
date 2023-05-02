@@ -1,5 +1,6 @@
 #!/bin/bash
-xuiygV="23.5.1 V 2.0  更新内容多！建议在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
+xuiygV="23.5.1 V 2.0
+更新内容多！建议在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
 remoteV=`wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh | sed  -n 2p | cut -d '"' -f 2`
 red='\033[0;31m'
 green='\033[0;32m'
