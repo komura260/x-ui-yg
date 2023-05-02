@@ -126,7 +126,7 @@ if [[ ! $wgcfv46 =~ on|plus ]]; then
 v4=$(curl -s4m6 ip.sb -k)
 if [ -z $v4 ]; then
 yellow "检测到 纯IPV6 VPS，添加DNS64"
-echo -e "nameserver 2001:67c:2960::64\nnameserver 2001:67c:2960::6464" > /etc/resolv.conf
+echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1" > /etc/resolv.conf
 fi
 fi
 }
