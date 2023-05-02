@@ -274,7 +274,7 @@ resinstall
 }
 
 update() {
-yellow "建议先在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
+yellow "建议先在 /etc/x-ui-yg 路径中导出 x-ui-yg.db 数据文件，做好备份哦"
 readp "确定升级，请按回车(退出请按ctrl+c):" ins
 if [[ -z $ins ]]; then
 systemctl stop x-ui
@@ -289,7 +289,7 @@ fi
 }
 
 uninstall() {
-yellow "本次卸载将清除所有数据，建议在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
+yellow "本次卸载将清除所有数据，建议在 /etc/x-ui-yg 路径中导出 x-ui-yg.db 数据文件，做好备份哦"
 readp "确定卸载，请按回车(退出请按ctrl+c):" ins
 if [[ -z $ins ]]; then
 systemctl stop x-ui
