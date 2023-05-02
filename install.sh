@@ -100,7 +100,7 @@ fi
 }
 
 close(){
-green "开放端口，关闭防火墙"
+yellow "开放端口，关闭防火墙"
 systemctl stop firewalld.service >/dev/null 2>&1
 systemctl disable firewalld.service >/dev/null 2>&1
 setenforce 0 >/dev/null 2>&1
