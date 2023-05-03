@@ -99,18 +99,8 @@ fi
 fi
 }
 
-get_char(){
-SAVEDSTTY=`stty -g`
-stty -echo
-stty cbreak
-dd if=/dev/tty bs=1 count=1 2> /dev/null
-stty -raw
-stty echo
-stty $SAVEDSTTY
-}
-
 close(){
-green "开放端口，关闭防火墙"
+yellow "开放端口，关闭防火墙"
 systemctl stop firewalld.service >/dev/null 2>&1
 systemctl disable firewalld.service >/dev/null 2>&1
 setenforce 0 >/dev/null 2>&1
@@ -135,7 +125,8 @@ wgcfv46=$(curl -sm5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cu
 if [[ ! $wgcfv46 =~ on|plus ]]; then
 v4=$(curl -s4m6 ip.sb -k)
 if [ -z $v4 ]; then
-echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1" > /etc/resolv.conf
+yellow "检测到 纯IPV6 VPS，添加DNS64"
+echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1\nnameserver 2a01:4f8:c2c:123f::1" > /etc/resolv.conf
 fi
 fi
 }
@@ -283,7 +274,7 @@ resinstall
 }
 
 update() {
-yellow "建议先在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
+yellow "建议先在 /etc/x-ui-yg 路径中导出 x-ui-yg.db 数据文件，做好备份哦"
 readp "确定升级，请按回车(退出请按ctrl+c):" ins
 if [[ -z $ins ]]; then
 systemctl stop x-ui
@@ -298,7 +289,7 @@ fi
 }
 
 uninstall() {
-yellow "本次卸载将清除所有数据，建议在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦"
+yellow "本次卸载将清除所有数据，建议在 /etc/x-ui-yg 路径中导出 x-ui-yg.db 数据文件，做好备份哦"
 readp "确定卸载，请按回车(退出请按ctrl+c):" ins
 if [[ -z $ins ]]; then
 systemctl stop x-ui
@@ -359,12 +350,23 @@ show_log() {
 journalctl -u x-ui.service -e --no-pager -f
 }
 
+get_char(){
+SAVEDSTTY=`stty -g`
+stty -echo
+stty cbreak
+dd if=/dev/tty bs=1 count=1 2> /dev/null
+stty -raw
+stty echo
+stty $SAVEDSTTY
+}
+
 back(){
 white "------------------------------------------------------------------------------------"
 white " 回x-ui主菜单，请按任意键"
 white " 退出脚本，请按Ctrl+C"
 get_char && show_menu
 }
+
 
 acme() {
 bash <(curl -L -s https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
