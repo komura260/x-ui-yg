@@ -350,16 +350,37 @@ show_log() {
 journalctl -u x-ui.service -e --no-pager -f
 }
 
+get_char(){
+SAVEDSTTY=`stty -g`
+stty -echo
+stty cbreak
+dd if=/dev/tty bs=1 count=1 2> /dev/null
+stty -raw
+stty echo
+stty $SAVEDSTTY
+}
+
+back(){
+white "------------------------------------------------------------------------------------"
+white " 回x-ui主菜单，请按任意键"
+white " 退出脚本，请按Ctrl+C"
+get_char && show_menu
+}
+
+
 acme() {
 bash <(curl -L -s https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
+back
 }
 
 bbr() {
 bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
+back
 }
 
 cfwarp() {
 wget -N https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh
+back
 }
 
 status() {
