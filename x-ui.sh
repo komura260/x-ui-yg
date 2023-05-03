@@ -351,23 +351,14 @@ journalctl -u x-ui.service -e --no-pager -f
 
 acme() {
 bash <(curl -L -s https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
-if [[ $# == 0 ]]; then
-show_menu
-fi
 }
 
 bbr() {
 bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
-if [[ $# == 0 ]]; then
-show_menu
-fi
 }
 
 cfwarp() {
 wget -N https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh
-if [[ $# == 0 ]]; then
-show_menu
-fi
 }
 
 status() {
