@@ -121,8 +121,9 @@ fi
 }
 
 v6(){
-wgcfv46=$(curl -sm5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
-if [[ ! $wgcfv46 =~ on|plus ]]; then
+wgcfv6=$(curl -s6m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+wgcfv4=$(curl -s4m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+if [[ ! $wgcfv4 =~ on|plus && ! $wgcfv6 =~ on|plus ]]; then
 v4=$(curl -s4m6 ip.sb -k)
 if [ -z $v4 ]; then
 yellow "检测到 纯IPV6 VPS，添加DNS64"
@@ -597,8 +598,9 @@ white "VPS系统信息如下："
 white "操作系统:   $(blue "$op")" && white "内核版本:   $(blue "$version")" && white "CPU架构 :   $(blue "$cpu")" && white "虚拟化类型: $(blue "$vi")"
 echo "------------------------------------------"
 show_status
-wgcfv46=$(curl -sm5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
-if [[ ! $wgcfv46 =~ on|plus ]]; then
+wgcfv6=$(curl -s6m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+wgcfv4=$(curl -s4m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+if [[ ! $wgcfv4 =~ on|plus && ! $wgcfv6 =~ on|plus ]]; then
 wgcf=未启用
 else
 wgcf=启用中
