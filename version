@@ -1,5 +1,5 @@
 2.0更新内容：
-提示：建议在/etc/x-ui-yg路径中导出x-ui-yg.db数据文件，做好备份哦
-一、修复切换Xray版本报错问题
-二、更新默认配置文件（重装生效）：取消屏蔽中国IP设置。添加设置V4与V6分流选项
+详见：https://ygkkk.blogspot.com/2022/02/githubx-uitgacmex-uiipv4ipv6v4v6vpsvaxi.html
 切记：更新后，进XUI面版把版本号设置为1.8.0以上
+
+
