@@ -1,5 +1,5 @@
 #!/bin/bash
-xuiygV="23.5.8 V 2.0 "
+xuiygV="23.5.9 V 2.0 "
 remoteV=`wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh | sed  -n 2p | cut -d '"' -f 2`
 red='\033[0;31m'
 green='\033[0;32m'
@@ -96,27 +96,6 @@ grep -qE "^ *@reboot root bash /root/tun.sh >/dev/null 2>&1" /etc/crontab || ech
 green "TUN守护功能已启动"
 fi
 fi
-fi
-}
-
-close(){
-yellow "开放端口，关闭防火墙"
-systemctl stop firewalld.service >/dev/null 2>&1
-systemctl disable firewalld.service >/dev/null 2>&1
-setenforce 0 >/dev/null 2>&1
-ufw disable >/dev/null 2>&1
-iptables -P INPUT ACCEPT >/dev/null 2>&1
-iptables -P FORWARD ACCEPT >/dev/null 2>&1
-iptables -P OUTPUT ACCEPT >/dev/null 2>&1
-iptables -t mangle -F >/dev/null 2>&1
-iptables -F >/dev/null 2>&1
-iptables -X >/dev/null 2>&1
-netfilter-persistent save >/dev/null 2>&1
-if [[ -n $(apachectl -v 2>/dev/null) ]]; then
-systemctl stop httpd.service >/dev/null 2>&1
-systemctl disable httpd.service >/dev/null 2>&1
-service apache2 stop >/dev/null 2>&1
-systemctl disable apache2 >/dev/null 2>&1
 fi
 }
 
@@ -265,7 +244,7 @@ show_usage
 }
 
 xuiinstall(){
-tun && yumaptcheck && close && v6
+tun && yumaptcheck && v6 && openyn
 baseinstall
 serinstall
 blue "以下设置内容建议自定义，防止账号密码及端口被恶意扫描而泄露"
@@ -555,6 +534,54 @@ crontab /tmp/crontab.tmp
 rm /tmp/crontab.tmp
 }
 
+close(){
+systemctl stop firewalld.service >/dev/null 2>&1
+systemctl disable firewalld.service >/dev/null 2>&1
+setenforce 0 >/dev/null 2>&1
+ufw disable >/dev/null 2>&1
+iptables -P INPUT ACCEPT >/dev/null 2>&1
+iptables -P FORWARD ACCEPT >/dev/null 2>&1
+iptables -P OUTPUT ACCEPT >/dev/null 2>&1
+iptables -t mangle -F >/dev/null 2>&1
+iptables -F >/dev/null 2>&1
+iptables -X >/dev/null 2>&1
+netfilter-persistent save >/dev/null 2>&1
+if [[ -n $(apachectl -v 2>/dev/null) ]]; then
+systemctl stop httpd.service >/dev/null 2>&1
+systemctl disable httpd.service >/dev/null 2>&1
+service apache2 stop >/dev/null 2>&1
+systemctl disable apache2 >/dev/null 2>&1
+fi
+sleep 1
+green "执行开放端口，关闭防火墙完毕"
+}
+
+openyn(){
+echo
+readp "是否开放端口，关闭防火强？\n1、是，执行(回车默认)\n2、否，不执行\n请选择：" action
+if [[ -z $action ]] || [[ $action == "1" ]]; then
+close
+elif [[ $action == "2" ]]; then
+echo
+else
+red "输入错误,请重新选择" && openyn
+fi
+}
+
+others(){
+echo
+readp "1. 开放端口，关闭防火墙 \n2. 查看、更改定时任务 \n3. 返回主菜单\n请选择：" action
+if [[ $action == "1" ]]; then
+close
+elif [[ $action == "2" ]]; then
+crontab -e
+elif [[ $action == "3" ]]; then
+show_menu
+else
+red "输入错误,请重新选择" && others
+fi
+}
+
 show_menu(){
 clear
 green "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"           
@@ -577,9 +604,10 @@ green " 4. 停止、重启 x-ui"
 green " 5. 变更 x-ui 设置（1.用户名密码 2.登录端口 3.还原面板设置）"
 green " 6. 查看 x-ui 运行日志"
 echo "----------------------------------------------------------------------------------"
-green " 7. ACME证书管理菜单"
-green " 8. 安装BBR+FQ加速"
-green " 9. 安装WARP脚本"
+green " 7. 其他设置（1.开放端口 2.定时任务）"
+green " 8. ACME证书管理菜单"
+green " 9. 安装BBR+FQ加速"
+green "10. 安装WARP脚本"
 green " 0. 退出脚本"
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 if [[ -f /etc/x-ui-yg/x-ui-yg.db ]]; then
@@ -623,9 +651,10 @@ case "$Input" in
  4 ) check_install && xuirestop;;
  5 ) check_install && xuichange;;
  6 ) check_install && show_log;;
- 7 ) acme;;
- 8 ) bbr;;
- 9 ) cfwarp;;
+ 7 ) others;;
+ 8 ) acme;;
+ 9 ) bbr;;
+ 10 ) cfwarp;;
  * ) exit 
 esac
 }
