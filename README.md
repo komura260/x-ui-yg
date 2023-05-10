@@ -6,7 +6,7 @@ wget -N https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh && bash install.sh
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 相关更新说明请查看[甬哥博客](https://ygkkk.blogspot.com/2022/02/githubx-uitgacmex-uiipv4ipv6v4v6vpsvaxi.html)
+### 相关更新说明请查看[甬哥博客](https://ygkkk.blogspot.com/2023/05/reality-xui-chatgpt.html)、[更新日志及配置](https://ygkkk.blogspot.com/2022/02/x-ui-yg.html)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ### [Github地址](https://github.com/yonggekkk/x-ui-yg)
@@ -14,10 +14,5 @@ wget -N https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh && bash install.sh
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-### 你可能喜欢
 
 ### [关于x-ui的质疑说明](https://ygkkk.blogspot.com/2022/06/github.html)
-
-### [全网首发：x-ui面版登录设置解析图，代理节点参数解析图，纯IPV4、纯IPV6登录X-UI面板的多种情况，以及cloudflare小黄云及端口的来龙去脉](https://ygkkk.blogspot.com/2022/03/x-uiipv4ipv6x-uicloudflare.html)
-
-
