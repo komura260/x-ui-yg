@@ -19,10 +19,10 @@ echo "不支持你当前系统，请选择使用Ubuntu,Debian,Centos系统" && e
 fi
 bit=`uname -m`
 if [[ $bit = aarch64 ]]; then
-wget -qO /root/xuiyg.sh https://gitlab.com/rwkgyg/x-ui-yg/-/raw/main/version/install.sh.a && chmod +x /root/xuiyg.sh
+wget -O /root/xuiyg.sh https://gitlab.com/rwkgyg/x-ui-yg/-/raw/main/version/install.sh.a && chmod +x /root/xuiyg.sh
 ./xuiyg.sh
 elif [[ $bit = x86_64 ]]; then
-wget -qO /root/xuiyg.sh https://gitlab.com/rwkgyg/x-ui-yg/-/raw/main/version/install.sh && chmod +x /root/xuiyg.sh
+wget -O /root/xuiyg.sh https://gitlab.com/rwkgyg/x-ui-yg/-/raw/main/version/install.sh && chmod +x /root/xuiyg.sh
 ./xuiyg.sh
 else
 echo "目前脚本不支持$bit架构" && exit
