@@ -3,6 +3,10 @@
 ```
 wget -N https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh && bash install.sh
 ```
+或
+```
+bash <(curl -Ls https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh)
+```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
