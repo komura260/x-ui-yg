@@ -558,7 +558,7 @@ green "执行开放端口，关闭防火墙完毕"
 
 openyn(){
 echo
-readp "是否开放端口，关闭防火强？\n1、是，执行(回车默认)\n2、否，不执行\n请选择：" action
+readp "是否开放端口，关闭防火墙？\n1、是，执行(回车默认)\n2、否，不执行\n请选择：" action
 if [[ -z $action ]] || [[ $action == "1" ]]; then
 close
 elif [[ $action == "2" ]]; then
