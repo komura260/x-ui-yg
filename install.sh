@@ -618,7 +618,7 @@ echo -e "当前 x-ui-yg 脚本版本号：${bblue}${xuiygV}${plain} 已是最新
 else
 echo -e "当前 x-ui-yg 脚本版本号：${bblue}${xuiygV}${plain}"
 echo -e "检测到最新 x-ui-yg 脚本版本号：${yellow}${remoteV}${plain}"
-echo -e "${yellow}$(wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/raw/main/version)${plain}"
+echo -e "${yellow}$(wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/-/raw/main/version/version)${plain}"
 echo -e "可选择3进行更新\n"
 fi
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
