@@ -15,8 +15,6 @@ bash <(curl -Ls https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh)
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ### [Github地址](https://github.com/yonggekkk/x-ui-yg)
 
-### [脚本代码查看方式](https://www.fythonfang.com/blog/2019/10/16/linux-core-dump-decrypt-script)
-
 ### 在此感谢[vaxilu](https://github.com/vaxilu/x-ui)，[FranzKafkaYu](https://github.com/FranzKafkaYu/x-ui)，[MHSanaei](https://github.com/MHSanaei/3x-ui)，[qist](https://github.com/qist/xray-ui)、[misaka](https://gitlab.com/Misaka-blog/x-ui-msk)等各位为此项目做出贡献
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
