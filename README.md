@@ -20,4 +20,4 @@ bash <(curl -Ls https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh)
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 
-### [关于x-ui的质疑说明](https://ygkkk.blogspot.com/2022/06/github.html)
+## [关于x-ui的挖矿放毒的说明，有疑问的先看这](https://ygkkk.blogspot.com/2022/06/github.html)
